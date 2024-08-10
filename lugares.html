@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUICK ACCESS</title>
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .armchairs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .chairs {
+    border: 0.5px solid black;
+    padding: 4px;
+    width: 60px;
+    height: 40px;
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="content">
+    <h1>QUICKACCESS</h1>
+    <h4>Listagens de lugares</h4>
+    <div class="armchairs" id="poltronas"></div>  
+  </div>  
+</body>
+</html>
+
+<script>
+  const totalPoltronas = 20
+  const poltronas = [];
+
+  for (let i = 1; i <= 20; i++) {
+    poltronas.push({
+      id: i,
+      situacao: "livre"
+    })
+  }
+
+  const criarPoltronas = () => {
+    const lugares = document.getElementById('poltronas')
+
+    poltronas.forEach(poltrona => {
+      const div = document.createElement("div");
+      div.setAttribute("value", poltrona.id)
+      div.setAttribute("situacao", poltrona.situacao)
+      div.textContent = `N° ${poltrona.id}`
+      div.classList.add('chairs')
+
+      poltrona.situacao === 'livre' ? div.style.backgroundColor = 'green' : div.style.backgroundColor = 'red'
+
+
+      lugares.appendChild(div)
+    })
+  }
+
+  criarPoltronas()
+
+</script>
